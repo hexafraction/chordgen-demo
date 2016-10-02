@@ -1,6 +1,7 @@
 package org.hackcooper.chordgen.backend;
 
 import java.util.*;
+import java.util.stream.Collector;
 
 public class Chord implements StringSerializable {
     public static final int MAX_KEY = 12;
@@ -38,6 +39,27 @@ public class Chord implements StringSerializable {
 
         public static Key fromOrdinal(int ord) {
             return fromOrdinal[ord];
+        }
+
+        public static Key fromLetter(char letter, boolean isSharp){
+            switch(Character.toUpperCase(letter)){
+                case 'C':
+                    return isSharp?Cs:C;
+                case 'D':
+                    return isSharp?Ds:D;
+                case 'E':
+                    return isSharp?F:E;
+                case 'F':
+                    return isSharp?Fs:F;
+                case 'G':
+                    return isSharp?Gs:G;
+                case 'A':
+                    return isSharp?As:A;
+                case 'B':
+                    return isSharp?C:B;
+                default:
+                    throw new IllegalArgumentException(String.format("%c%s is not a valid key.", letter, isSharp?"#":""));
+            }
         }
 
     }

@@ -1,0 +1,47 @@
+Q to quit the current tool at any time.
+Requirements for database administration tool:
+* Open and save current DB to/from disk
+	* Prompt for name
+	* Confirm overwrite, if applicable
+	* Clear/initialize undo manager.
+* Access a single DB entry:
+	* Begin undo manager transaction.
+	* Prompt for DB key
+	* Display current value: Actual value, weight, certainty
+	* Prompt if update desired
+	* Prompt new value, weight, certainty
+	* Persist to DB
+	* End transaction
+* Chord progressions
+	* Generate a progression (quick)
+		* Prompt for length
+		* Generate using no weight penalty
+		* Proceed to progression details
+	* Generate a progression using unrated chords (quick)
+		* Prompt for length
+		* Generate with a medium weight penalty
+		* Proceed to progression details
+	* Generate a progression (advanced)
+		// Blank entry is default value
+		* Prompt for singlet, double, triple, quad weights
+		* Prompt for length
+		* Prompt for weight penalty
+		* Prompt for number of individuals
+		* Prompt for number of generations
+		* Prompt for crossover rate and points
+		* Prompt for random change rate
+		* Generate with these settings.
+		* Proceed to progression details
+	* Manually input chord progression
+		* Prompt for progression
+		* Proceed to progression details.
+	** Progression details
+		* Play the progression through MIDI.
+		* Display the progression in grid format
+		* Prompt for a rating and weight (r to replay, q to quit)
+		* Prompt if any subsequences of interest
+			* Prompt for start/end of subsequences
+			* Play and display grid
+			* Prompt for rating and weight. R to replay, of course
+		* Wrap in an undo transaction: persist all changes made.
+* Quit (prompt if unsaved)
